@@ -1,5 +1,5 @@
 import HeroContainer from "../../shared/HeroContainer";
-import { Field } from "./Field";
+import Field from "./Field/Field";
 import { FormData } from "../../../types";
 
 const Form = ({ fields }: FormData) => {

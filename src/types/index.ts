@@ -5,7 +5,12 @@ export interface HeroContainerProps {
   children: ReactNode;
 }
 
-interface Option {
+export interface GeneratorProps {
+  jsonData: string;
+  handleJsonChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export interface Option {
   label: string;
   value: string | number;
 }

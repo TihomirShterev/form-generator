@@ -8,9 +8,9 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import { IField } from "../../../types";
+import { IField } from "../../../../types";
 
-export const Field = ({ type, label, placeholder, options }: IField) => {
+const Field = ({ type, label, placeholder, options }: IField) => {
   switch (type) {
     case "text":
     case "textarea":
@@ -58,3 +58,5 @@ export const Field = ({ type, label, placeholder, options }: IField) => {
       return null;
   }
 };
+
+export default Field;

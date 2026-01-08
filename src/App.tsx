@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import { SetStateAction, useState } from "react";
-import Form from "./components/core/Form";
-import Generator from "./components/core/Generator";
+import Form from "./components/core/Form/Form";
+import Generator from "./components/core/Generator/Generator";
 
 const App = () => {
   const [jsonData, setJsonData] = useState(

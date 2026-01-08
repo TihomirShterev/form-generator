@@ -1,10 +1,6 @@
 import { TextField } from "@mui/material";
 import HeroContainer from "../../shared/HeroContainer";
-
-interface GeneratorProps {
-  jsonData: any;
-  handleJsonChange: (ev: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { GeneratorProps } from "../../../types";
 
 const Generator = ({ jsonData, handleJsonChange }: GeneratorProps) => {
   return (
