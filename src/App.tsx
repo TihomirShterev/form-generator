@@ -1,5 +1,5 @@
 import { Container } from "@mui/material";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import Form from "./components/core/Form/Form";
 import Generator from "./components/core/Generator/Generator";
 
@@ -14,10 +14,25 @@ const App = () => {
     )
   );
 
-  const handleJsonChange = (ev: {
-    target: { value: SetStateAction<string> };
+  const [parsedData, setParsedData] = useState({
+    fields: [],
+  });
+
+  const [error, setError] = useState("");
+
+  const handleJsonChange = ({
+    target: { value },
+  }: {
+    target: { value: string };
   }) => {
-    setJsonData(ev.target.value);
+    setJsonData(value);
+
+    try {
+      setParsedData(JSON.parse(value));
+      setError("");
+    } catch (err) {
+      setError("Please enter a valid JSON structure");
+    }
   };
 
   return (
@@ -30,8 +45,12 @@ const App = () => {
         gap: 3,
       }}
     >
-      <Generator jsonData={jsonData} handleJsonChange={handleJsonChange} />
-      <Form fields={JSON.parse(jsonData).fields} />
+      <Generator
+        jsonData={jsonData}
+        handleJsonChange={handleJsonChange}
+        error={error}
+      />
+      <Form fields={parsedData.fields} />
     </Container>
   );
 };

@@ -8,6 +8,7 @@ export interface HeroContainerProps {
 export interface GeneratorProps {
   jsonData: string;
   handleJsonChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
+  error: string;
 }
 
 export interface Option {
