@@ -32,12 +32,13 @@ export interface Validation {
 }
 
 export interface IField {
-  type: "text" | "textarea" | "dropdown" | "checkbox" | "radio";
+  type: "text" | "textarea" | "dropdown" | "checkbox" | "radio" | "group";
   name: string;
   label: string;
   placeholder?: string;
   options?: Option[];
   validation?: Validation;
+  fields?: IField[];
 }
 
 export interface FieldProps {
