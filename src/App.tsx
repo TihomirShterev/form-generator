@@ -38,8 +38,8 @@ const App = () => {
   return (
     <Container
       sx={{
-        mt: 3,
-        mb: 3,
+        mt: 2,
+        mb: 2,
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "space-between",

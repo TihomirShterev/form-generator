@@ -13,7 +13,7 @@ const Generator = ({ jsonData, handleJsonChange, error }: GeneratorProps) => (
       value={jsonData}
       error={!!error}
       helperText={error}
-      sx={{ fontFamily: "monospace" }}
+      sx={{ bgcolor: "#ffffff" }}
     />
   </HeroContainer>
 );
