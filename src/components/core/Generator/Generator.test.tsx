@@ -6,6 +6,7 @@ describe("Generator Component", () => {
   const defaultProps = {
     jsonData: "",
     handleJsonChange: jest.fn(),
+    error: "",
   };
 
   beforeEach(() => {

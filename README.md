@@ -22,6 +22,10 @@ This project is a [Create React App](https://github.com/facebook/create-react-ap
     - checkbox
     - radio
   - Output: the generated form.
+- Dynamic Validation Rules
+  - Input validations are adaptable depending on other field values.
+  - Custom validation can be passed to text field.
+- Form Submission - prints a structured JSON object containing all filled-in values.
 
 ## Available Scripts
 
@@ -46,22 +50,84 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## Example JSON Inputs
 
-### Basic
+### Basic Example
+
+- Validation on form submission and then on input change
+- Submitting data prints a JSON object containing the filled-in values
 
 ```json
 {
   "fields": [
     {
       "type": "text",
+      "name": "name",
       "label": "Name",
-      "placeholder": "Enter your name"
+      "placeholder": "Enter your name",
+      "validation": {
+        "required": "Name is required",
+        "custom": "alphabetic"
+      }
+    },
+    {
+      "type": "text",
+      "name": "email",
+      "label": "Email",
+      "placeholder": "Enter your email",
+      "validation": {
+        "required": "Email is required",
+        "custom": "email"
+      }
+    },
+    {
+      "type": "text",
+      "name": "phone",
+      "label": "Phone",
+      "placeholder": "Enter your phone",
+      "validation": {
+        "required": "Phone is required",
+        "custom": "numeric"
+      }
+    },
+    {
+      "type": "text",
+      "name": "password",
+      "label": "Password",
+      "placeholder": "Enter your password",
+      "validation": {
+        "required": "Password is required",
+        "custom": "password"
+      }
+    },
+    {
+      "type": "textarea",
+      "name": "description",
+      "label": "Description",
+      "validation": {
+        "maxLength": {
+          "value": 50,
+          "message": "Maximum of 50 characters allowed"
+        }
+      }
+    },
+    {
+      "name": "service",
+      "type": "dropdown",
+      "label": "Service Type",
+      "options": [
+        { "label": "BUSINESS", "value": "business" },
+        { "label": "INDIVIDUAL", "value": "individual" }
+      ],
+      "validation": { "required": "Select an option" }
     },
     {
       "type": "checkbox",
-      "label": "Agree to Terms"
+      "name": "terms",
+      "label": "Agree to Terms",
+      "validation": { "required": "Agreeing to terms is required" }
     },
     {
       "type": "radio",
+      "name": "choice",
       "label": "Choose One",
       "options": [
         { "label": "Yes", "value": "yes" },
