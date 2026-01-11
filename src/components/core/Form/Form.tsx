@@ -18,10 +18,10 @@ const Form = ({ fields }: FormData) => {
   }, [fields, reset]);
 
   const onSubmit = (data: { [key: string]: string | boolean | null }) => {
-    console.log("data: ", data);
     console.log(JSON.stringify(data, null, 2));
     reset({});
   };
+
   return (
     <HeroContainer title="Generated Form:">
       <form onSubmit={handleSubmit(onSubmit)}>

@@ -10,7 +10,7 @@ import {
   TextField,
 } from "@mui/material";
 import { FieldProps } from "../../../../types";
-import customize from "../../../../utils/validation";
+import { customize } from "../../../../utils/validation";
 
 const Field = ({
   field: { type, name, label, placeholder, options, validation },
