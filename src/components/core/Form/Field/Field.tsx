@@ -2,15 +2,23 @@ import {
   Checkbox,
   FormControl,
   FormControlLabel,
+  FormHelperText,
   FormLabel,
   MenuItem,
   Radio,
   RadioGroup,
   TextField,
 } from "@mui/material";
-import { IField } from "../../../../types";
+import { FieldProps } from "../../../../types";
+import customize from "../../../../utils/validation";
 
-const Field = ({ type, label, placeholder, options }: IField) => {
+const Field = ({
+  field: { type, name, label, placeholder, options, validation },
+  register,
+  errors,
+}: FieldProps) => {
+  const errorMessage = errors[name]?.message as string;
+
   switch (type) {
     case "text":
     case "textarea":
@@ -20,11 +28,22 @@ const Field = ({ type, label, placeholder, options }: IField) => {
           placeholder={placeholder}
           fullWidth
           multiline={type === "textarea"}
+          {...register(name, customize(validation))}
+          error={!!errorMessage}
+          helperText={errorMessage}
         />
       );
     case "dropdown":
       return (
-        <TextField select label={label} fullWidth defaultValue="">
+        <TextField
+          select
+          label={label}
+          fullWidth
+          defaultValue=""
+          {...register(name, validation)}
+          error={!!errorMessage}
+          helperText={errorMessage}
+        >
           {options?.map((option, i) => (
             <MenuItem key={i} value={option.value}>
               {option.label}
@@ -34,24 +53,29 @@ const Field = ({ type, label, placeholder, options }: IField) => {
       );
     case "checkbox":
       return (
-        <FormControl>
-          <FormControlLabel control={<Checkbox />} label={label} />
+        <FormControl error={!!errorMessage}>
+          <FormControlLabel
+            control={<Checkbox {...register(name, validation)} />}
+            label={label}
+          />
+          {errorMessage && <FormHelperText>{errorMessage}</FormHelperText>}
         </FormControl>
       );
     case "radio":
       return (
-        <FormControl>
+        <FormControl error={!!errorMessage}>
           <FormLabel>{label}</FormLabel>
           <RadioGroup>
             {options?.map((option, i) => (
               <FormControlLabel
                 key={i}
                 value={option.value}
-                control={<Radio />}
+                control={<Radio {...register(name, validation)} />}
                 label={option.label}
               />
             ))}
           </RadioGroup>
+          {errorMessage && <FormHelperText>{errorMessage}</FormHelperText>}
         </FormControl>
       );
     default:
