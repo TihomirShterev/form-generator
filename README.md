@@ -26,6 +26,10 @@ This project is a [Create React App](https://github.com/facebook/create-react-ap
   - Input validations are adaptable depending on other field values.
   - Custom validation can be passed to text field.
 - Form Submission - prints a structured JSON object containing all filled-in values.
+- Field Groups
+  - Clearly distinguishable.
+  - Can be shown or hidden dynamically based on the values of other fields.
+  - Can be nested.
 
 ## Available Scripts
 
@@ -110,9 +114,9 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
       }
     },
     {
-      "name": "service",
+      "name": "entity",
       "type": "dropdown",
-      "label": "Service Type",
+      "label": "Entity",
       "options": [
         { "label": "BUSINESS", "value": "business" },
         { "label": "INDIVIDUAL", "value": "individual" }
@@ -140,15 +144,66 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### Field Group Example
 
-- Enabled nested group support
+- Enabled conditional rendering and nested group support
 
 ```json
 {
   "fields": [
     {
+      "name": "entity",
+      "type": "dropdown",
+      "label": "Entity",
+      "options": [
+        { "label": "BUSINESS", "value": "business" },
+        { "label": "INDIVIDUAL", "value": "individual" }
+      ],
+      "validation": { "required": "Select an option" }
+    },
+    {
       "type": "group",
-      "name": "orderData",
-      "label": "Order Data",
+      "name": "companyData",
+      "label": "Company Data",
+      "isVisible": { "name": "entity", "value": "business" },
+      "fields": [
+        {
+          "type": "text",
+          "name": "companyName",
+          "label": "Company Name",
+          "placeholder": "Enter company name",
+          "validation": { "required": "Company Name is required" }
+        },
+        {
+          "type": "text",
+          "name": "uniqueIdentificationCode",
+          "label": "Unique Identification Code",
+          "placeholder": "Enter Unique Identification Code",
+          "validation": {
+            "required": "Unique Identification Code is required",
+            "custom": "numeric"
+          }
+        },
+        {
+          "type": "text",
+          "name": "iban",
+          "label": "IBAN",
+          "placeholder": "Enter IBAN",
+          "validation": {
+            "required": "IBAN is required",
+            "custom": "alphanumeric"
+          }
+        },
+        {
+          "type": "text",
+          "name": "addressOfHeadquarters",
+          "label": "Address of Headquarters"
+        }
+      ]
+    },
+    {
+      "type": "group",
+      "name": "individualData",
+      "label": "Individual Data",
+      "isVisible": { "name": "entity", "value": "individual" },
       "fields": [
         {
           "type": "group",
@@ -200,22 +255,6 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
           ]
         }
       ]
-    },
-    {
-      "name": "service",
-      "type": "dropdown",
-      "label": "Service Type",
-      "options": [
-        { "label": "BUSINESS", "value": "business" },
-        { "label": "INDIVIDUAL", "value": "individual" }
-      ],
-      "validation": { "required": "Select an option" }
-    },
-    {
-      "type": "checkbox",
-      "name": "terms",
-      "label": "Agree to Terms",
-      "validation": { "required": "Agreeing to terms is required" }
     }
   ]
 }
