@@ -7,137 +7,8 @@ import {
   waitFor,
 } from "@testing-library/react";
 import Form from "./Form";
-import { IField, Option } from "../../../types";
-
-const FIELDS_MOCK: IField[] = [
-  {
-    type: "text",
-    name: "name",
-    label: "Name",
-    placeholder: "Enter your name",
-    validation: {
-      required: "Name is required",
-      custom: "alphabetic",
-    },
-  },
-  {
-    name: "entity",
-    type: "dropdown",
-    label: "Entity",
-    options: [
-      { label: "BUSINESS", value: "business" },
-      { label: "INDIVIDUAL", value: "individual" },
-    ],
-    validation: { required: "Select an option" },
-  },
-  {
-    type: "group",
-    name: "companyData",
-    label: "Company Data",
-    isVisible: { name: "entity", value: "business" },
-    fields: [
-      {
-        type: "text",
-        name: "companyName",
-        label: "Company Name",
-        placeholder: "Enter company name",
-        validation: { required: "Company Name is required" },
-      },
-      {
-        type: "text",
-        name: "uniqueIdentificationCode",
-        label: "Unique Identification Code",
-        placeholder: "Enter Unique Identification Code",
-        validation: {
-          required: "Unique Identification Code is required",
-          custom: "numeric",
-        },
-      },
-      {
-        type: "text",
-        name: "iban",
-        label: "IBAN",
-        placeholder: "Enter IBAN",
-        validation: {
-          required: "IBAN is required",
-          custom: "alphanumeric",
-        },
-      },
-      {
-        type: "text",
-        name: "addressOfHeadquarters",
-        label: "Address of Headquarters",
-      },
-    ],
-  },
-  {
-    type: "group",
-    name: "individualData",
-    label: "Individual Data",
-    isVisible: { name: "entity", value: "individual" },
-    fields: [
-      {
-        type: "group",
-        name: "personalData",
-        label: "Personal Data",
-        fields: [
-          {
-            type: "text",
-            name: "name",
-            label: "Name",
-            placeholder: "Enter your name",
-            validation: {
-              required: "Name is required",
-              custom: "alphabetic",
-            },
-          },
-          {
-            type: "text",
-            name: "email",
-            label: "Email",
-            placeholder: "Enter your email",
-            validation: {
-              required: "Email is required",
-              custom: "email",
-            },
-          },
-        ],
-      },
-      {
-        type: "group",
-        name: "deliveryData",
-        label: "Delivery Data",
-        fields: [
-          {
-            type: "text",
-            name: "city",
-            label: "City",
-          },
-          {
-            type: "text",
-            name: "addressLineOne",
-            label: "Address Line 1",
-          },
-          {
-            type: "text",
-            name: "addressLineTwo",
-            label: "Address Line 2",
-          },
-        ],
-      },
-    ],
-  },
-  { type: "checkbox", name: "terms", label: "Agree to Terms" },
-  {
-    type: "radio",
-    name: "choice",
-    label: "Choose One",
-    options: [
-      { value: "yes", label: "Yes" },
-      { value: "no", label: "No" },
-    ],
-  },
-];
+import { Option } from "../../../types";
+import { FIELDS_MOCK } from "../../../utils/constants";
 
 describe("Form Component", () => {
   it("should render fields correctly", () => {
@@ -186,6 +57,23 @@ describe("Form Component", () => {
 
     await waitFor(() => {
       expect(screen.getByText(/Company Data/i)).toBeInTheDocument();
+    });
+  });
+
+  it("should auto-fill city and state based on zip code", async () => {
+    render(<Form fields={FIELDS_MOCK} />);
+    const dropdownTrigger = screen.getByLabelText(/Entity/i);
+    fireEvent.mouseDown(dropdownTrigger);
+    const option = await screen.findByText("INDIVIDUAL");
+    fireEvent.click(option);
+
+    fireEvent.change(screen.getByLabelText("Zip Code"), {
+      target: { value: "90010" },
+    });
+
+    await waitFor(() => {
+      expect(screen.getByDisplayValue("Los Angeles")).toBeInTheDocument();
+      expect(screen.getByDisplayValue("California")).toBeInTheDocument();
     });
   });
 
