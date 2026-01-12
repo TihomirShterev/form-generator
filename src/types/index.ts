@@ -38,6 +38,7 @@ export interface IField {
   placeholder?: string;
   options?: Option[];
   validation?: Validation;
+  isVisible?: { name: string; value: string };
   fields?: IField[];
 }
 

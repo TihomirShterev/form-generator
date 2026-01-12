@@ -11,6 +11,7 @@ const Form = ({ fields }: FormData) => {
     handleSubmit,
     reset,
     formState: { errors },
+    watch,
   } = useForm();
 
   useEffect(() => {
@@ -21,6 +22,10 @@ const Form = ({ fields }: FormData) => {
     console.log(JSON.stringify(data, null, 2));
     reset({});
   };
+
+  const filteredFields = fields.filter(({ isVisible }) => {
+    return isVisible === undefined || watch(isVisible.name) === isVisible.value;
+  });
 
   return (
     <HeroContainer title="Generated Form:">
@@ -36,7 +41,7 @@ const Form = ({ fields }: FormData) => {
             bgcolor: "#f2f2f2",
           }}
         >
-          {fields.map((field, i) => (
+          {filteredFields.map((field, i) => (
             <Field key={i} field={field} register={register} errors={errors} />
           ))}
           <Button
