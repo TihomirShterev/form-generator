@@ -12,6 +12,12 @@ export interface GeneratorProps {
   error: string;
 }
 
+export interface AddressData {
+  zipCode: string;
+  city: string;
+  state: string;
+}
+
 export interface Option {
   label: string;
   value: string | number;

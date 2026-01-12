@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { Box, Button } from "@mui/material";
 import HeroContainer from "../../shared/HeroContainer";
 import Field from "./Field/Field";
+import { fetchAddressByZip } from "../../../services/mockApi";
 import { FormData } from "../../../types";
 
 const Form = ({ fields }: FormData) => {
@@ -12,11 +13,32 @@ const Form = ({ fields }: FormData) => {
     reset,
     formState: { errors },
     watch,
+    control,
+    setValue,
   } = useForm();
 
   useEffect(() => {
     reset({});
   }, [fields, reset]);
+
+  const zipCode: string = useWatch({ control, name: "zipCode" });
+
+  useEffect(() => {
+    if (zipCode?.length === 5) {
+      const autoFill = async () => {
+        const data = await fetchAddressByZip(zipCode);
+        if (data.city) {
+          setValue("city", data.city);
+        }
+
+        if (data.state) {
+          setValue("state", data.state);
+        }
+      };
+
+      autoFill();
+    }
+  }, [zipCode, setValue]);
 
   const onSubmit = (data: { [key: string]: string | boolean | null }) => {
     console.log(JSON.stringify(data, null, 2));
