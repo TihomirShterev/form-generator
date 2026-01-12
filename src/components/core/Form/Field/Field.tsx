@@ -34,6 +34,7 @@ const Field = ({
           error={!!errorMessage}
           helperText={errorMessage}
           sx={{ mb: 2, "& .MuiInputBase-root": { bgcolor: "#ffffff" } }}
+          slotProps={{ inputLabel: { shrink: true, sx: { color: "#1976d2" } } }}
         />
       );
     case "dropdown":
@@ -47,6 +48,7 @@ const Field = ({
           error={!!errorMessage}
           helperText={errorMessage}
           sx={{ "& .MuiInputBase-root": { bgcolor: "#ffffff" } }}
+          slotProps={{ inputLabel: { shrink: true, sx: { color: "#1976d2" } } }}
         >
           {options?.map((option, i) => (
             <MenuItem key={i} value={option.value}>

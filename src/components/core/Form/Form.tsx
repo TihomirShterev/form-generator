@@ -23,9 +23,10 @@ const Form = ({ fields }: FormData) => {
     reset({});
   };
 
-  const filteredFields = fields.filter(({ isVisible }) => {
-    return isVisible === undefined || watch(isVisible.name) === isVisible.value;
-  });
+  const filteredFields = fields.filter(
+    ({ isVisible }) =>
+      isVisible === undefined || watch(isVisible.name) === isVisible.value
+  );
 
   return (
     <HeroContainer title="Generated Form:">

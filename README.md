@@ -67,40 +67,28 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
       "name": "name",
       "label": "Name",
       "placeholder": "Enter your name",
-      "validation": {
-        "required": "Name is required",
-        "custom": "alphabetic"
-      }
+      "validation": { "required": "Name is required", "custom": "alphabetic" }
     },
     {
       "type": "text",
       "name": "email",
       "label": "Email",
       "placeholder": "Enter your email",
-      "validation": {
-        "required": "Email is required",
-        "custom": "email"
-      }
+      "validation": { "required": "Email is required", "custom": "email" }
     },
     {
       "type": "text",
       "name": "phone",
       "label": "Phone",
       "placeholder": "Enter your phone",
-      "validation": {
-        "required": "Phone is required",
-        "custom": "numeric"
-      }
+      "validation": { "required": "Phone is required", "custom": "numeric" }
     },
     {
       "type": "text",
       "name": "password",
       "label": "Password",
       "placeholder": "Enter your password",
-      "validation": {
-        "required": "Password is required",
-        "custom": "password"
-      }
+      "validation": { "required": "Password is required", "custom": "password" }
     },
     {
       "type": "textarea",
