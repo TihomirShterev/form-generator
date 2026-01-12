@@ -30,6 +30,7 @@ This project is a [Create React App](https://github.com/facebook/create-react-ap
   - Clearly distinguishable.
   - Can be shown or hidden dynamically based on the values of other fields.
   - Can be nested.
+- Auto-Fill - City and State may be auto-filled with content coming from a mocked API based on Zip Code.
 
 ## Available Scripts
 
@@ -58,6 +59,9 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 - Validation on form submission and then on input change
 - Submitting data prints a JSON object containing the filled-in values
+
+<details>
+<summary>Click to view JSON configuration</summary>
 
 ```json
 {
@@ -130,9 +134,13 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 }
 ```
 
+</details>
 ### Field Group Example
 
 - Enabled conditional rendering and nested group support
+
+<details>
+<summary>Click to view JSON configuration</summary>
 
 ```json
 {
@@ -247,3 +255,44 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
   ]
 }
 ```
+
+</details>
+
+### Auto-Fill Example
+
+- City and State may be auto-filled with content coming from a mocked API based on Zip Code.
+
+<details>
+<summary>Click to view JSON configuration</summary>
+
+```json
+{
+  "fields": [
+    {
+      "type": "text",
+      "name": "zipCode",
+      "label": "Zip Code",
+      "placeholder": "Enter Zip Code",
+      "validation": {
+        "custom": "numeric",
+        "maxLength": { "value": 5, "message": "Zip Code must be 5 digits" },
+        "minLength": { "value": 5, "message": "Zip Code must be 5 digits" }
+      }
+    },
+    {
+      "type": "text",
+      "name": "city",
+      "label": "City (Auto-filled)",
+      "validation": { "required": "City is required" }
+    },
+    {
+      "type": "text",
+      "name": "state",
+      "label": "State (Auto-filled)",
+      "validation": { "required": "State is required" }
+    }
+  ]
+}
+```
+
+</details>
