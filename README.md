@@ -61,7 +61,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 - Submitting data prints a JSON object containing the filled-in values
 
 <details>
-<summary>Click to view JSON configuration</summary>
+<summary>JSON Structure</summary>
 
 ```json
 {
@@ -135,12 +135,13 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 ```
 
 </details>
+
 ### Field Group Example
 
 - Enabled conditional rendering and nested group support
 
 <details>
-<summary>Click to view JSON configuration</summary>
+<summary>JSON Structure</summary>
 
 ```json
 {
@@ -263,7 +264,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 - City and State may be auto-filled with content coming from a mocked API based on Zip Code.
 
 <details>
-<summary>Click to view JSON configuration</summary>
+<summary>JSON Structure</summary>
 
 ```json
 {
