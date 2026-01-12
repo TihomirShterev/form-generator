@@ -137,3 +137,86 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
   ]
 }
 ```
+
+### Field Group Example
+
+- Enabled nested group support
+
+```json
+{
+  "fields": [
+    {
+      "type": "group",
+      "name": "orderData",
+      "label": "Order Data",
+      "fields": [
+        {
+          "type": "group",
+          "name": "personalData",
+          "label": "Personal Data",
+          "fields": [
+            {
+              "type": "text",
+              "name": "name",
+              "label": "Name",
+              "placeholder": "Enter your name",
+              "validation": {
+                "required": "Name is required",
+                "custom": "alphabetic"
+              }
+            },
+            {
+              "type": "text",
+              "name": "email",
+              "label": "Email",
+              "placeholder": "Enter your email",
+              "validation": {
+                "required": "Email is required",
+                "custom": "email"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "name": "deliveryData",
+          "label": "Delivery Data",
+          "fields": [
+            {
+              "type": "text",
+              "name": "city",
+              "label": "City"
+            },
+            {
+              "type": "text",
+              "name": "addressLineOne",
+              "label": "Address Line 1"
+            },
+            {
+              "type": "text",
+              "name": "addressLineTwo",
+              "label": "Address Line 2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "service",
+      "type": "dropdown",
+      "label": "Service Type",
+      "options": [
+        { "label": "BUSINESS", "value": "business" },
+        { "label": "INDIVIDUAL", "value": "individual" }
+      ],
+      "validation": { "required": "Select an option" }
+    },
+    {
+      "type": "checkbox",
+      "name": "terms",
+      "label": "Agree to Terms",
+      "validation": { "required": "Agreeing to terms is required" }
+    }
+  ]
+}
+```

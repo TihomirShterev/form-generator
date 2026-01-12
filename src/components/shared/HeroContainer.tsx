@@ -7,17 +7,11 @@ const HeroContainer = ({ children, title }: HeroContainerProps) => (
       flex: 1,
       display: "flex",
       flexDirection: "column",
-      gap: 3,
-      minWidth: "240px",
-      p: 2,
-      borderRadius: "16px",
-      boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-      bgcolor: "#ffffff",
+      gap: 2,
+      minWidth: "260px",
     }}
   >
-    <Typography variant="h5">
-      {title}
-    </Typography>
+    <Typography variant="h5">{title}</Typography>
     {children}
   </Box>
 );

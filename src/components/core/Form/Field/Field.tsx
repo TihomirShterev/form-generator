@@ -1,9 +1,11 @@
 import {
+  Box,
   Checkbox,
   FormControl,
   FormControlLabel,
   FormHelperText,
   FormLabel,
+  InputLabel,
   MenuItem,
   Radio,
   RadioGroup,
@@ -13,7 +15,7 @@ import { FieldProps } from "../../../../types";
 import { customize } from "../../../../utils/validation";
 
 const Field = ({
-  field: { type, name, label, placeholder, options, validation },
+  field: { type, name, label, placeholder, options, validation, fields },
   register,
   errors,
 }: FieldProps) => {
@@ -31,6 +33,7 @@ const Field = ({
           {...register(name, customize(validation))}
           error={!!errorMessage}
           helperText={errorMessage}
+          sx={{ mb: 2, "& .MuiInputBase-root": { bgcolor: "#ffffff" } }}
         />
       );
     case "dropdown":
@@ -43,6 +46,7 @@ const Field = ({
           {...register(name, validation)}
           error={!!errorMessage}
           helperText={errorMessage}
+          sx={{ "& .MuiInputBase-root": { bgcolor: "#ffffff" } }}
         >
           {options?.map((option, i) => (
             <MenuItem key={i} value={option.value}>
@@ -77,6 +81,17 @@ const Field = ({
           </RadioGroup>
           {errorMessage && <FormHelperText>{errorMessage}</FormHelperText>}
         </FormControl>
+      );
+    case "group":
+      return (
+        <Box
+          sx={{ p: 2, mb: 2, border: "1px solid #cccccc", borderRadius: "4px" }}
+        >
+          <InputLabel sx={{ mb: 2 }}>{label}</InputLabel>
+          {fields?.map((field, i) => (
+            <Field key={i} field={field} register={register} errors={errors} />
+          ))}
+        </Box>
       );
     default:
       return null;

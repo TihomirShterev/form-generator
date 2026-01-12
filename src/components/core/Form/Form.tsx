@@ -25,7 +25,17 @@ const Form = ({ fields }: FormData) => {
   return (
     <HeroContainer title="Generated Form:">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 3,
+            p: 2,
+            borderRadius: "2px",
+            boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)",
+            bgcolor: "#f2f2f2",
+          }}
+        >
           {fields.map((field, i) => (
             <Field key={i} field={field} register={register} errors={errors} />
           ))}
