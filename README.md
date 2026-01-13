@@ -31,10 +31,11 @@ This project is a [Create React App](https://github.com/facebook/create-react-ap
   - Can be shown or hidden dynamically based on the values of other fields.
   - Can be nested.
 - Auto-Fill - City and State may be auto-filled with content coming from a mocked API based on Zip Code.
+- Auto-Save
+  - Progress remains - for example, when the page has been reloaded.
+  - Input data is kept in localStorage.
 
 ## Available Scripts
-
-In the project directory, you can run:
 
 ### `npm install` or `yarn`
 
@@ -57,8 +58,8 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### Basic Example
 
-- Validation on form submission and then on input change
-- Submitting data prints a JSON object containing the filled-in values
+Validation on form submission and then on input change.
+Submitting data prints a JSON object containing the filled-in values.
 
 <details>
 <summary>JSON Structure</summary>
@@ -138,7 +139,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### Field Group Example
 
-- Enabled conditional rendering and nested group support
+Enabled conditional rendering and nested group support.
 
 <details>
 <summary>JSON Structure</summary>
@@ -261,7 +262,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### Auto-Fill Example
 
-- City and State may be auto-filled with content coming from a mocked API based on Zip Code.
+City and State may be auto-filled with content coming from a mocked API based on Zip Code.
 
 <details>
 <summary>JSON Structure</summary>
