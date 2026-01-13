@@ -220,3 +220,12 @@ export const AUTO_FILL_DATA_MOCK: {
     state: "California",
   },
 };
+
+export const INITIAL_GENERATOR_DATA = {
+  fields: [],
+};
+
+export const JSON_DATA_KEY = "auto_save_json_data";
+export const AUTO_SAVE_JSON_DATA = localStorage.getItem(JSON_DATA_KEY);
+export const FORM_DATA_KEY = "auto_save_form_data";
+export const AUTO_SAVE_FORM_DATA = localStorage.getItem(FORM_DATA_KEY);

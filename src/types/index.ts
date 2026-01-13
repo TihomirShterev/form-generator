@@ -57,3 +57,7 @@ export interface FieldProps {
 export interface FormData {
   fields: IField[];
 }
+
+export interface FormValues {
+  [key: string]: string | boolean | null;
+}

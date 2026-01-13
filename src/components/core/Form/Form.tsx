@@ -4,7 +4,8 @@ import { Box, Button } from "@mui/material";
 import HeroContainer from "../../shared/HeroContainer";
 import Field from "./Field/Field";
 import { fetchAddressByZip } from "../../../services/mockApi";
-import { FormData } from "../../../types";
+import { AUTO_SAVE_FORM_DATA, FORM_DATA_KEY } from "../../../utils/constants";
+import { FormData, FormValues } from "../../../types";
 
 const Form = ({ fields }: FormData) => {
   const {
@@ -15,14 +16,13 @@ const Form = ({ fields }: FormData) => {
     watch,
     control,
     setValue,
-  } = useForm();
+  } = useForm<FormValues>({
+    defaultValues: AUTO_SAVE_FORM_DATA ? JSON.parse(AUTO_SAVE_FORM_DATA) : {},
+  });
 
-  useEffect(() => {
-    reset({});
-  }, [fields, reset]);
+  const watchedValues = useWatch({ control });
 
-  const zipCode: string = useWatch({ control, name: "zipCode" });
-
+  const zipCode = watchedValues.zipCode as string;
   useEffect(() => {
     if (zipCode?.length === 5) {
       const autoFill = async () => {
@@ -40,9 +40,20 @@ const Form = ({ fields }: FormData) => {
     }
   }, [zipCode, setValue]);
 
-  const onSubmit = (data: { [key: string]: string | boolean | null }) => {
+  // Auto-save to localStorage whenever a value changes
+  useEffect(() => {
+    if (watchedValues) {
+      const debounceSave = setTimeout(() => {
+        localStorage.setItem(FORM_DATA_KEY, JSON.stringify(watchedValues));
+      }, 1000);
+
+      return () => clearTimeout(debounceSave);
+    }
+  }, [watchedValues]);
+
+  const onSubmit = (data: FormValues) => {
     console.log(JSON.stringify(data, null, 2));
-    reset({});
+    localStorage.removeItem(FORM_DATA_KEY);
   };
 
   const filteredFields = fields.filter(
