@@ -3,8 +3,8 @@ import { useForm, useWatch } from "react-hook-form";
 import { Box, Button } from "@mui/material";
 import HeroContainer from "../../shared/HeroContainer";
 import Field from "./Field/Field";
-import { fetchAddressByZip } from "../../../services/mockApi";
 import { AUTO_SAVE_FORM_DATA, FORM_DATA_KEY } from "../../../utils/constants";
+import { useAutoFill } from "../../../hooks/useAutoFill";
 import { FormData, FormValues } from "../../../types";
 
 const Form = ({ fields }: FormData) => {
@@ -12,7 +12,6 @@ const Form = ({ fields }: FormData) => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
     watch,
     control,
     setValue,
@@ -21,24 +20,7 @@ const Form = ({ fields }: FormData) => {
   });
 
   const watchedValues = useWatch({ control });
-
-  const zipCode = watchedValues.zipCode as string;
-  useEffect(() => {
-    if (zipCode?.length === 5) {
-      const autoFill = async () => {
-        const data = await fetchAddressByZip(zipCode);
-        if (data.city) {
-          setValue("city", data.city);
-        }
-
-        if (data.state) {
-          setValue("state", data.state);
-        }
-      };
-
-      autoFill();
-    }
-  }, [zipCode, setValue]);
+  useAutoFill(watchedValues.zipCode as string, setValue);
 
   // Auto-save to localStorage whenever a value changes
   useEffect(() => {
