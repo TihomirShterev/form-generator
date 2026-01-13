@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { Box, Button } from "@mui/material";
+import { Alert, Box, Button, Snackbar } from "@mui/material";
 import HeroContainer from "../../shared/HeroContainer";
 import Field from "./Field/Field";
 import { AUTO_SAVE_FORM_DATA, FORM_DATA_KEY } from "../../../utils/constants";
@@ -8,16 +8,24 @@ import { useAutoFill } from "../../../hooks/useAutoFill";
 import { FormData, FormValues } from "../../../types";
 
 const Form = ({ fields }: FormData) => {
+  const [open, setOpen] = useState(false);
+
   const {
     register,
     handleSubmit,
     reset,
+    formState: { errors, isSubmitSuccessful },
     watch,
     control,
     setValue,
   } = useForm<FormValues>({
     defaultValues: AUTO_SAVE_FORM_DATA ? JSON.parse(AUTO_SAVE_FORM_DATA) : {},
   });
+
+  const filteredFields = fields.filter(
+    ({ isVisible }) =>
+      isVisible === undefined || watch(isVisible.name) === isVisible.value
+  );
 
   const watchedValues = useWatch({ control });
   useAutoFill(watchedValues.zipCode as string, setValue);
@@ -35,13 +43,17 @@ const Form = ({ fields }: FormData) => {
 
   const onSubmit = (data: FormValues) => {
     console.log(JSON.stringify(data, null, 2));
+    setOpen(true);
     localStorage.removeItem(FORM_DATA_KEY);
   };
 
-  const filteredFields = fields.filter(
-    ({ isVisible }) =>
-      isVisible === undefined || watch(isVisible.name) === isVisible.value
-  );
+  useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset();
+    }
+  }, [isSubmitSuccessful, reset]);
+
+  const handleClose = () => setOpen(false);
 
   return (
     <HeroContainer title="Generated Form:">
@@ -70,6 +82,16 @@ const Form = ({ fields }: FormData) => {
           </Button>
         </Box>
       </form>
+      <Snackbar
+        open={open}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        autoHideDuration={5000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="success" variant="filled">
+          Successfully submitted.
+        </Alert>
+      </Snackbar>
     </HeroContainer>
   );
 };
