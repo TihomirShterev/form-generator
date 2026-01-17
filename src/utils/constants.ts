@@ -1,4 +1,4 @@
-import { IField } from "../types";
+import { IField } from "../types/types";
 
 export const VALIDATION_DATA = {
   alphabetic: {
@@ -25,7 +25,7 @@ export const VALIDATION_DATA = {
   },
 };
 
-export const FIELDS_MOCK: IField[] = [
+export const MOCK_FIELDS: IField[] = [
   {
     type: "text",
     name: "name",
@@ -173,7 +173,7 @@ export const FIELDS_MOCK: IField[] = [
   },
 ];
 
-export const AUTO_FILL_DATA_MOCK: {
+export const MOCK_AUTO_FILL_DATA: {
   [key: string]: {
     city: string;
     state: string;

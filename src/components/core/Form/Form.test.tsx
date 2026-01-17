@@ -7,12 +7,12 @@ import {
   waitFor,
 } from "@testing-library/react";
 import Form from "./Form";
-import { Option } from "../../../types";
-import { FIELDS_MOCK } from "../../../utils/constants";
+import { Option } from "../../../types/types";
+import { MOCK_FIELDS } from "../../../utils/constants";
 
 describe("Form Component", () => {
   it("should render fields correctly", () => {
-    render(<Form fields={FIELDS_MOCK} />);
+    render(<Form fields={MOCK_FIELDS} />);
 
     expect(screen.getByLabelText("Name")).toHaveAttribute(
       "placeholder",
@@ -21,20 +21,20 @@ describe("Form Component", () => {
 
     expect(screen.getByLabelText("Agree to Terms")).toBeInTheDocument();
 
-    FIELDS_MOCK[2].options?.forEach((option: Option) => {
+    MOCK_FIELDS[2].options?.forEach((option: Option) => {
       const radioField = screen.getByLabelText(option.label);
       expect(radioField).toBeInTheDocument();
     });
   });
 
   it("should validate required fields correctly", async () => {
-    render(<Form fields={FIELDS_MOCK} />);
+    render(<Form fields={MOCK_FIELDS} />);
     fireEvent.click(screen.getByText("Submit"));
     expect(await screen.findByText("Name is required")).toBeInTheDocument();
   });
 
   it("should validate custom alphabetic fields correctly", async () => {
-    render(<Form fields={FIELDS_MOCK} />);
+    render(<Form fields={MOCK_FIELDS} />);
 
     fireEvent.input(screen.getByLabelText("Name"), {
       target: { value: "123" },
@@ -48,7 +48,7 @@ describe("Form Component", () => {
   });
 
   it("should render dynamic field groups correctly", async () => {
-    render(<Form fields={FIELDS_MOCK} />);
+    render(<Form fields={MOCK_FIELDS} />);
     expect(screen.queryByLabelText(/Company Data/i)).not.toBeInTheDocument();
     const dropdownTrigger = screen.getByLabelText(/Entity/i);
     fireEvent.mouseDown(dropdownTrigger);
@@ -61,7 +61,7 @@ describe("Form Component", () => {
   });
 
   it("should auto-fill city and state based on zip code", async () => {
-    render(<Form fields={FIELDS_MOCK} />);
+    render(<Form fields={MOCK_FIELDS} />);
     const dropdownTrigger = screen.getByLabelText(/Entity/i);
     fireEvent.mouseDown(dropdownTrigger);
     const option = await screen.findByText("INDIVIDUAL");
@@ -78,7 +78,7 @@ describe("Form Component", () => {
   });
 
   it("should handle form submission with valid data", async () => {
-    render(<Form fields={FIELDS_MOCK} />);
+    render(<Form fields={MOCK_FIELDS} />);
     fireEvent.mouseDown(screen.getByLabelText("Entity"));
     const options = await screen.findAllByRole("option");
     fireEvent.click(options[0]); // Select "BUSINESS"

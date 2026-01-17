@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { UseFormSetValue } from "react-hook-form";
-import { fetchAddressByZip } from "../services/mockApi";
-import { FormValues } from "../types";
+import { fetchAddressByZip } from "../services/api";
+import { FormValues } from "../types/types";
 
 export const useAutoFill = (zipCode: string, setValue: UseFormSetValue<FormValues>) => {
   useEffect(() => {

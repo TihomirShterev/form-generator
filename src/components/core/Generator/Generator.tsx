@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 import HeroContainer from "../../shared/HeroContainer";
-import { GeneratorProps } from "../../../types";
+import { GeneratorProps } from "../../../types/types";
 
 const Generator = ({ jsonData, handleJsonChange, error }: GeneratorProps) => (
   <HeroContainer title="JSON Structure:">
@@ -13,7 +13,7 @@ const Generator = ({ jsonData, handleJsonChange, error }: GeneratorProps) => (
       value={jsonData}
       error={!!error}
       helperText={error}
-      sx={{ bgcolor: "#ffffff" }}
+      sx={{ bgcolor: "#fff" }}
     />
   </HeroContainer>
 );

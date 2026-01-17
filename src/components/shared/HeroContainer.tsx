@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { HeroContainerProps } from "../../types";
+import { HeroContainerProps } from "../../types/types";
 
 const HeroContainer = ({ children, title }: HeroContainerProps) => (
   <Box

@@ -11,7 +11,7 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import { FieldProps } from "../../../../types";
+import { FieldProps } from "../../../../types/types";
 import { customize } from "../../../../utils/validation";
 
 const Field = ({
@@ -33,7 +33,7 @@ const Field = ({
           {...register(name, customize(validation))}
           error={!!errorMessage}
           helperText={errorMessage}
-          sx={{ mb: 2, "& .MuiInputBase-root": { bgcolor: "#ffffff" } }}
+          sx={{ mb: 2, "& .MuiInputBase-root": { bgcolor: "#fff" } }}
           slotProps={{ inputLabel: { shrink: true, sx: { color: "#1976d2" } } }}
         />
       );
@@ -47,7 +47,7 @@ const Field = ({
           {...register(name, validation)}
           error={!!errorMessage}
           helperText={errorMessage}
-          sx={{ "& .MuiInputBase-root": { bgcolor: "#ffffff" } }}
+          sx={{ "& .MuiInputBase-root": { bgcolor: "#fff" } }}
           slotProps={{ inputLabel: { shrink: true, sx: { color: "#1976d2" } } }}
         >
           {options?.map((option, i) => (
@@ -87,7 +87,7 @@ const Field = ({
     case "group":
       return (
         <Box
-          sx={{ p: 2, mb: 2, border: "1px solid #cccccc", borderRadius: "4px" }}
+          sx={{ p: 2, mb: 2, border: "1px solid #ccc", borderRadius: "4px" }}
         >
           <InputLabel sx={{ mb: 2 }}>{label}</InputLabel>
           {fields?.map((field, i) => (
