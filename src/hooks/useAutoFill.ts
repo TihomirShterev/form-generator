@@ -32,5 +32,5 @@ export const useAutoFill = ({
 
       autoFill();
     }
-  }, [zipCode, setValue, resetField, setError]);
+  }, [zipCode, setValue, setError, clearErrors, resetField]);
 };
