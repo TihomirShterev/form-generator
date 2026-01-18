@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import HeroContainer from "../../shared/HeroContainer";
+import ContainerCard from "../../shared/ContainerCard";
 import { ConfigurationInputProps } from "../../../types/types";
 
 const ConfigurationInput = ({
@@ -7,7 +7,7 @@ const ConfigurationInput = ({
   handleJsonChange,
   error,
 }: ConfigurationInputProps) => (
-  <HeroContainer title="JSON Structure:">
+  <ContainerCard title="JSON Structure:">
     <TextField
       fullWidth
       multiline
@@ -19,7 +19,7 @@ const ConfigurationInput = ({
       helperText={error}
       sx={{ bgcolor: "#fff" }}
     />
-  </HeroContainer>
+  </ContainerCard>
 );
 
 export default ConfigurationInput;
