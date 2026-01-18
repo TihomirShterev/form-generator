@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { fetchAddressByZip } from "../services/api";
-import { AutoFillHookProps } from "../types/types";
+import { AutoFill } from "../types/types";
 
 export const useAutoFill = ({
   zipCode,
@@ -8,7 +8,7 @@ export const useAutoFill = ({
   setError,
   clearErrors,
   resetField,
-}: AutoFillHookProps) => {
+}: AutoFill) => {
   useEffect(() => {
     if (zipCode?.length === 5) {
       const autoFill = async () => {

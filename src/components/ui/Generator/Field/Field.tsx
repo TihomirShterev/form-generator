@@ -11,7 +11,7 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import { FieldProps } from "../../../../types/types";
+import { FieldProps } from "./Field.types";
 import { customize } from "../../../../utils/validation";
 
 const Field = ({

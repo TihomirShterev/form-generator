@@ -1,35 +1,9 @@
-import { ReactNode } from "react";
 import {
-  UseFormRegister,
-  FieldErrors,
-  FieldValues,
+  UseFormSetValue,
+  UseFormSetError,
   UseFormClearErrors,
   UseFormResetField,
-  UseFormSetError,
-  UseFormSetValue,
 } from "react-hook-form";
-
-export interface ContainerBoxProps {
-  title: string;
-  children: ReactNode;
-}
-
-export interface ConfigurationInputProps {
-  jsonData: string;
-  handleJsonChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
-  error: string;
-}
-
-export interface AddressData {
-  zipCode: string;
-  city: string;
-  state: string;
-}
-
-export interface Option {
-  label: string;
-  value: string | number;
-}
 
 interface LengthValidation {
   value: number;
@@ -45,33 +19,20 @@ export interface Validation {
   custom?: "alphabetic" | "numeric" | "alphanumeric" | "email" | "password";
 }
 
-export interface IField {
-  type: "text" | "textarea" | "dropdown" | "checkbox" | "radio" | "group";
-  name: string;
-  label: string;
-  placeholder?: string;
-  options?: Option[];
-  validation?: Validation;
-  isVisible?: { name: string; value: string };
-  fields?: IField[];
-}
+type ZipCode = string;
 
-export interface FieldProps {
-  field: IField;
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors<FieldValues>;
-}
-
-export interface GeneratorProps {
-  fields: IField[];
+export interface AddressData {
+  zipCode: ZipCode;
+  city: string;
+  state: string;
 }
 
 export interface FormValues {
   [key: string]: string | boolean | null;
 }
 
-export interface AutoFillHookProps {
-  zipCode: string;
+export interface AutoFill {
+  zipCode: ZipCode;
   setValue: UseFormSetValue<FormValues>;
   setError: UseFormSetError<FormValues>;
   clearErrors: UseFormClearErrors<FormValues>;

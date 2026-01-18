@@ -1,4 +1,4 @@
-import { Field } from "../../../types/types";
+import { Field } from "./Field/Field.types";
 
 export const MOCK_FIELDS: Field[] = [
   {

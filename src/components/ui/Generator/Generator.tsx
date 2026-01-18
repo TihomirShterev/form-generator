@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Alert, Box, Button, Snackbar } from "@mui/material";
-import ContainerBox from "../../core/ContainerBox";
+import ContainerBox from "../../core/ContainerBox/ContainerBox";
 import Field from "./Field/Field";
 import { useAutoFill } from "../../../hooks/useAutoFill";
-import { GeneratorProps, FormValues } from "../../../types/types";
+import { FormValues } from "../../../types/types";
+import { GeneratorProps } from "./Generator.types";
 import { AUTO_SAVE_FORM_DATA, FORM_DATA_KEY } from "./Generator.data";
 
 const Generator = ({ fields }: GeneratorProps) => {

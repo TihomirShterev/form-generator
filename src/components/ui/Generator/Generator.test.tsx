@@ -7,7 +7,7 @@ import {
   waitFor,
 } from "@testing-library/react";
 import Generator from "./Generator";
-import { Option } from "../../../types/types";
+import { Option } from "./Field/Field.types";
 import { MOCK_FIELDS } from "./Generator.data";
 
 describe("Generator Component", () => {

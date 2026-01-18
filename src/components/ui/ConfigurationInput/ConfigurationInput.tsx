@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
-import ContainerBox from "../../core/ContainerBox";
-import { ConfigurationInputProps } from "../../../types/types";
+import ContainerBox from "../../core/ContainerBox/ContainerBox";
+import { ConfigurationInputProps } from "./ConfigurationInput.types";
 
 const ConfigurationInput = ({
   jsonData,

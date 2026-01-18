@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { ContainerBoxProps } from "../../types/types";
+import { ContainerBoxProps } from "./ContainerBox.types";
 
 const ContainerBox = ({ children, title }: ContainerBoxProps) => (
   <Box
