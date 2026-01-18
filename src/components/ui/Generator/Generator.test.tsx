@@ -8,7 +8,7 @@ import {
 } from "@testing-library/react";
 import Generator from "./Generator";
 import { Option } from "../../../types/types";
-import { MOCK_FIELDS } from "../../../utils/constants";
+import { MOCK_FIELDS } from "./Generator.data";
 
 describe("Generator Component", () => {
   it("should generate fields correctly", () => {

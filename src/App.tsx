@@ -6,7 +6,7 @@ import {
   AUTO_SAVE_JSON_DATA,
   INITIAL_CONFIGURATION_INPUT_DATA,
   JSON_DATA_KEY,
-} from "./utils/constants";
+} from "./App.data";
 
 const App = () => {
   const [jsonData, setJsonData] = useState(
