@@ -18,6 +18,9 @@ const Form = ({ fields }: FormData) => {
     watch,
     control,
     setValue,
+    setError,
+    clearErrors,
+    resetField,
   } = useForm<FormValues>({
     defaultValues: AUTO_SAVE_FORM_DATA ? JSON.parse(AUTO_SAVE_FORM_DATA) : {},
   });
@@ -28,7 +31,14 @@ const Form = ({ fields }: FormData) => {
   );
 
   const watchedValues = useWatch({ control });
-  useAutoFill(watchedValues.zipCode as string, setValue);
+
+  useAutoFill({
+    zipCode: watchedValues.zipCode as string,
+    setValue,
+    setError,
+    clearErrors,
+    resetField,
+  });
 
   useEffect(() => {
     if (watchedValues) {

@@ -2,8 +2,8 @@ import { IField } from "../types/types";
 
 export const VALIDATION_DATA = {
   alphabetic: {
-    pattern: /^[A-Za-z]+$/,
-    message: "Please enter letters only",
+    pattern: /^[A-Za-z\s]+$/,
+    message: "Please enter letters and space only",
   },
   numeric: {
     pattern: /^[0-9]+$/,

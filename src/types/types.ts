@@ -1,5 +1,13 @@
 import { ReactNode } from "react";
-import { UseFormRegister, FieldErrors, FieldValues } from "react-hook-form";
+import {
+  UseFormRegister,
+  FieldErrors,
+  FieldValues,
+  UseFormClearErrors,
+  UseFormResetField,
+  UseFormSetError,
+  UseFormSetValue,
+} from "react-hook-form";
 
 export interface HeroContainerProps {
   title: string;
@@ -60,4 +68,12 @@ export interface FormData {
 
 export interface FormValues {
   [key: string]: string | boolean | null;
+}
+
+export interface AutoFillHookProps {
+  zipCode: string;
+  setValue: UseFormSetValue<FormValues>;
+  setError: UseFormSetError<FormValues>;
+  clearErrors: UseFormClearErrors<FormValues>;
+  resetField: UseFormResetField<FormValues>;
 }

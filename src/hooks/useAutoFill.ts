@@ -1,23 +1,36 @@
 import { useEffect } from "react";
-import { UseFormSetValue } from "react-hook-form";
 import { fetchAddressByZip } from "../services/api";
-import { FormValues } from "../types/types";
+import { AutoFillHookProps } from "../types/types";
 
-export const useAutoFill = (zipCode: string, setValue: UseFormSetValue<FormValues>) => {
+export const useAutoFill = ({
+  zipCode,
+  setValue,
+  setError,
+  clearErrors,
+  resetField,
+}: AutoFillHookProps) => {
   useEffect(() => {
     if (zipCode?.length === 5) {
       const autoFill = async () => {
-        const data = await fetchAddressByZip(zipCode);
-        if (data.city) {
-          setValue("city", data.city);
-        }
+        try {
+          const data = await fetchAddressByZip(zipCode);
 
-        if (data.state) {
-          setValue("state", data.state);
+          if (data.city) {
+            setValue("city", data.city);
+          }
+
+          if (data.state) {
+            setValue("state", data.state);
+          }
+
+          clearErrors();
+        } catch (err) {
+          resetField("city");
+          resetField("state");
         }
       };
 
       autoFill();
     }
-  }, [zipCode, setValue]);
+  }, [zipCode, setValue, resetField, setError]);
 };

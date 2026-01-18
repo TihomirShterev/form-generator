@@ -273,7 +273,7 @@ City and State may be auto-filled with content coming from a mocked API based on
     {
       "type": "text",
       "name": "zipCode",
-      "label": "Zip Code",
+      "label": "Zip Code (Try 10001 for New York)",
       "placeholder": "Enter Zip Code",
       "validation": {
         "custom": "numeric",
