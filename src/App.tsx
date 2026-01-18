@@ -1,22 +1,23 @@
 import { Container } from "@mui/material";
 import { useState } from "react";
 import Form from "./components/core/Form/Form";
-import Generator from "./components/core/Generator/Generator";
+import ConfigurationInput from "./components/core/ConfigurationInput/ConfigurationInput";
 import {
   AUTO_SAVE_JSON_DATA,
-  INITIAL_GENERATOR_DATA,
+  INITIAL_CONFIGURATION_INPUT_DATA,
   JSON_DATA_KEY,
 } from "./utils/constants";
 
 const App = () => {
   const [jsonData, setJsonData] = useState(
-    AUTO_SAVE_JSON_DATA || JSON.stringify(INITIAL_GENERATOR_DATA, null, 2)
+    AUTO_SAVE_JSON_DATA ||
+      JSON.stringify(INITIAL_CONFIGURATION_INPUT_DATA, null, 2)
   );
 
   const [parsedData, setParsedData] = useState(
     AUTO_SAVE_JSON_DATA
       ? JSON.parse(AUTO_SAVE_JSON_DATA)
-      : INITIAL_GENERATOR_DATA
+      : INITIAL_CONFIGURATION_INPUT_DATA
   );
 
   const [error, setError] = useState("");
@@ -48,7 +49,7 @@ const App = () => {
         gap: 3,
       }}
     >
-      <Generator
+      <ConfigurationInput
         jsonData={jsonData}
         handleJsonChange={handleJsonChange}
         error={error}

@@ -1,8 +1,8 @@
 import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import Generator from "./Generator";
+import ConfigurationInput from "./ConfigurationInput";
 
-describe("Generator Component", () => {
+describe("ConfigurationInput Component", () => {
   const defaultProps = {
     jsonData: "",
     handleJsonChange: jest.fn(),
@@ -19,12 +19,12 @@ describe("Generator Component", () => {
       jsonData: '{"name": "John"}',
     };
 
-    render(<Generator {...props} />);
+    render(<ConfigurationInput {...props} />);
     expect(screen.getByRole("textbox")).toHaveValue('{"name": "John"}');
   });
 
   it("should call handleJsonChange on change", () => {
-    render(<Generator {...defaultProps} />);
+    render(<ConfigurationInput {...defaultProps} />);
     const input = screen.getByRole("textbox");
     fireEvent.change(input, { target: { value: '{"age": 30}' } });
     expect(defaultProps.handleJsonChange).toHaveBeenCalledTimes(1);

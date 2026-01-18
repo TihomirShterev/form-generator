@@ -1,8 +1,12 @@
 import { TextField } from "@mui/material";
 import HeroContainer from "../../shared/HeroContainer";
-import { GeneratorProps } from "../../../types/types";
+import { ConfigurationInputProps } from "../../../types/types";
 
-const Generator = ({ jsonData, handleJsonChange, error }: GeneratorProps) => (
+const ConfigurationInput = ({
+  jsonData,
+  handleJsonChange,
+  error,
+}: ConfigurationInputProps) => (
   <HeroContainer title="JSON Structure:">
     <TextField
       fullWidth
@@ -18,4 +22,4 @@ const Generator = ({ jsonData, handleJsonChange, error }: GeneratorProps) => (
   </HeroContainer>
 );
 
-export default Generator;
+export default ConfigurationInput;

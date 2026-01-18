@@ -221,7 +221,7 @@ export const MOCK_AUTO_FILL_DATA: {
   },
 };
 
-export const INITIAL_GENERATOR_DATA = {
+export const INITIAL_CONFIGURATION_INPUT_DATA = {
   fields: [],
 };
 
