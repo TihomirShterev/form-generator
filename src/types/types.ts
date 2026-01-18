@@ -62,7 +62,7 @@ export interface FieldProps {
   errors: FieldErrors<FieldValues>;
 }
 
-export interface FormData {
+export interface GeneratorProps {
   fields: IField[];
 }
 

@@ -5,9 +5,9 @@ import HeroContainer from "../../shared/HeroContainer";
 import Field from "./Field/Field";
 import { AUTO_SAVE_FORM_DATA, FORM_DATA_KEY } from "../../../utils/constants";
 import { useAutoFill } from "../../../hooks/useAutoFill";
-import { FormData, FormValues } from "../../../types/types";
+import { GeneratorProps, FormValues } from "../../../types/types";
 
-const Form = ({ fields }: FormData) => {
+const Generator = ({ fields }: GeneratorProps) => {
   const [open, setOpen] = useState(false);
 
   const {
@@ -105,4 +105,4 @@ const Form = ({ fields }: FormData) => {
   );
 };
 
-export default Form;
+export default Generator;
