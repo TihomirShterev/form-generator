@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import { useState } from "react";
-import Generator from "./components/core/Generator/Generator";
-import ConfigurationInput from "./components/core/ConfigurationInput/ConfigurationInput";
+import Generator from "./components/ui/Generator/Generator";
+import ConfigurationInput from "./components/ui/ConfigurationInput/ConfigurationInput";
 import {
   AUTO_SAVE_JSON_DATA,
   INITIAL_CONFIGURATION_INPUT_DATA,

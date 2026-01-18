@@ -9,7 +9,7 @@ import {
   UseFormSetValue,
 } from "react-hook-form";
 
-export interface ContainerCardProps {
+export interface ContainerBoxProps {
   title: string;
   children: ReactNode;
 }

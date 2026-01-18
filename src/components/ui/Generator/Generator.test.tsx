@@ -43,7 +43,7 @@ describe("Generator Component", () => {
     fireEvent.click(screen.getByText("Submit"));
 
     expect(
-      await screen.findByText("Please enter letters only")
+      await screen.findByText("Please enter letters and space only")
     ).toBeInTheDocument();
   });
 

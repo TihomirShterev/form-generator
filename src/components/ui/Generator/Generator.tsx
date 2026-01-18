@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Alert, Box, Button, Snackbar } from "@mui/material";
-import ContainerCard from "../../shared/ContainerCard";
+import ContainerBox from "../../core/ContainerBox";
 import Field from "./Field/Field";
 import { AUTO_SAVE_FORM_DATA, FORM_DATA_KEY } from "../../../utils/constants";
 import { useAutoFill } from "../../../hooks/useAutoFill";
@@ -65,7 +65,7 @@ const Generator = ({ fields }: GeneratorProps) => {
   const handleClose = () => setOpen(false);
 
   return (
-    <ContainerCard title="Generated Form:">
+    <ContainerBox title="Generated Form:">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Box
           sx={{
@@ -101,7 +101,7 @@ const Generator = ({ fields }: GeneratorProps) => {
           Successfully submitted.
         </Alert>
       </Snackbar>
-    </ContainerCard>
+    </ContainerBox>
   );
 };
 
