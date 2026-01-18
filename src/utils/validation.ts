@@ -1,5 +1,5 @@
 import { Validation } from "../types/types";
-import { VALIDATION_DATA } from "./validation.data";
+import { VALIDATION_DATA } from "./constants";
 
 export const customize = (rules?: Validation) => {
   if (rules?.custom) {
