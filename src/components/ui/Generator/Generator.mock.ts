@@ -1,4 +1,4 @@
-import { IField } from "../../../types/types";
+import { IField } from "@/types/types";
 
 export const MOCK_FIELDS: IField[] = [
   {

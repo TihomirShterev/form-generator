@@ -1,4 +1,4 @@
-import { ZipCode } from "../types/types";
+import { ZipCode } from "@/types/types";
 import { MOCK_AUTO_FILL_DATA } from "./api.data";
 
 interface AddressData {

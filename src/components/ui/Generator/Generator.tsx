@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Alert, Box, Button, Snackbar } from "@mui/material";
+import { IField, FormValues } from "@/types/types";
 import ContainerBox from "../../core/ContainerBox/ContainerBox";
 import Field from "./Field/Field";
 import { useAutoFill } from "../../../hooks/useAutoFill";
-import { FormValues, IField } from "../../../types/types";
 
 const FORM_DATA_KEY = "auto_save_form_data";
 const autoSaveFormData = localStorage.getItem(FORM_DATA_KEY);

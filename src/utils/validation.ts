@@ -1,4 +1,4 @@
-import { Validation } from "../types/types";
+import { Validation } from "@/types/types";
 
 const VALIDATION_DATA = {
   alphabetic: {

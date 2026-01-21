@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { fetchAddressByZip } from "../services/api";
-import { AutoFill } from "../types/types";
+import { AutoFill } from "@/types/types";
 
 export const useAutoFill = ({
   zipCode,

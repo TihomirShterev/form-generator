@@ -6,8 +6,8 @@ import {
   screen,
   waitFor,
 } from "@testing-library/react";
+import { Option } from "@/types/types";
 import Generator from "./Generator";
-import { Option } from "../../../types/types";
 import { MOCK_FIELDS } from "./Generator.mock";
 
 describe("Generator Component", () => {

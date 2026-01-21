@@ -12,7 +12,7 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import { IField } from "../../../../types/types";
+import { IField } from "@/types/types";
 import { customize } from "../../../../utils/validation";
 
 interface FieldProps {
