@@ -7,8 +7,8 @@ import {
   waitFor,
 } from "@testing-library/react";
 import Generator from "./Generator";
-import { Option } from "./Field/Field.types";
-import { MOCK_FIELDS } from "./Generator.data";
+import { Option } from "../../../types/types";
+import { MOCK_FIELDS } from "./Generator.mock";
 
 describe("Generator Component", () => {
   it("should generate fields correctly", () => {
@@ -67,7 +67,7 @@ describe("Generator Component", () => {
     const option = await screen.findByText("INDIVIDUAL");
     fireEvent.click(option);
 
-    fireEvent.change(screen.getByLabelText("Zip Code"), {
+    fireEvent.change(screen.getByLabelText("Zip Code (Try 10001 for New York)"), {
       target: { value: "90010" },
     });
 

@@ -3,22 +3,14 @@ import "@testing-library/jest-dom/extend-expect";
 import ConfigurationInput from "./ConfigurationInput";
 
 describe("ConfigurationInput Component", () => {
-  const defaultProps = {
-    jsonData: "",
-    handleJsonChange: jest.fn(),
-    error: "",
-  };
+  const defaultProps = { jsonData: "", handleJsonChange: jest.fn(), error: "" };
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it("should render with jsonData", () => {
-    const props = {
-      ...defaultProps,
-      jsonData: '{"name": "John"}',
-    };
-
+    const props = { ...defaultProps, jsonData: '{"name": "John"}' };
     render(<ConfigurationInput {...props} />);
     expect(screen.getByRole("textbox")).toHaveValue('{"name": "John"}');
   });

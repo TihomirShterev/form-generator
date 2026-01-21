@@ -4,9 +4,14 @@ import { Alert, Box, Button, Snackbar } from "@mui/material";
 import ContainerBox from "../../core/ContainerBox/ContainerBox";
 import Field from "./Field/Field";
 import { useAutoFill } from "../../../hooks/useAutoFill";
-import { FormValues } from "../../../types/types";
-import { GeneratorProps } from "./Generator.types";
-import { AUTO_SAVE_FORM_DATA, FORM_DATA_KEY } from "./Generator.data";
+import { FormValues, IField } from "../../../types/types";
+
+const FORM_DATA_KEY = "auto_save_form_data";
+const autoSaveFormData = localStorage.getItem(FORM_DATA_KEY);
+
+interface GeneratorProps {
+  fields: IField[];
+}
 
 const Generator = ({ fields }: GeneratorProps) => {
   const [open, setOpen] = useState(false);
@@ -23,7 +28,7 @@ const Generator = ({ fields }: GeneratorProps) => {
     clearErrors,
     resetField,
   } = useForm<FormValues>({
-    defaultValues: AUTO_SAVE_FORM_DATA ? JSON.parse(AUTO_SAVE_FORM_DATA) : {},
+    defaultValues: autoSaveFormData ? JSON.parse(autoSaveFormData) : {},
   });
 
   const filteredFields = fields.filter(

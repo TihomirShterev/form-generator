@@ -19,13 +19,23 @@ export interface Validation {
   custom?: "alphabetic" | "numeric" | "alphanumeric" | "email" | "password";
 }
 
-type ZipCode = string;
-
-export interface AddressData {
-  zipCode: ZipCode;
-  city: string;
-  state: string;
+export interface Option {
+  label: string;
+  value: string | number;
 }
+
+export interface IField {
+  type: "text" | "textarea" | "dropdown" | "checkbox" | "radio" | "group";
+  name: string;
+  label: string;
+  placeholder?: string;
+  options?: Option[];
+  validation?: Validation;
+  isVisible?: { name: string; value: string };
+  fields?: IField[];
+}
+
+export type ZipCode = string;
 
 export interface FormValues {
   [key: string]: string | boolean | null;

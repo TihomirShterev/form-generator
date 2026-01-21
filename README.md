@@ -235,11 +235,7 @@ Enabled conditional rendering and nested group support.
           "name": "deliveryData",
           "label": "Delivery Data",
           "fields": [
-            {
-              "type": "text",
-              "name": "city",
-              "label": "City"
-            },
+            { "type": "text", "name": "city", "label": "City" },
             {
               "type": "text",
               "name": "addressLineOne",

@@ -1,6 +1,11 @@
 import { TextField } from "@mui/material";
 import ContainerBox from "../../core/ContainerBox/ContainerBox";
-import { ConfigurationInputProps } from "./ConfigurationInput.types";
+
+interface ConfigurationInputProps {
+  jsonData: string;
+  handleJsonChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
+  error: string;
+}
 
 const ConfigurationInput = ({
   jsonData,

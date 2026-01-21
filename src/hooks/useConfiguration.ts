@@ -1,19 +1,18 @@
 import { useState } from "react";
-import {
-  AUTO_SAVE_JSON_DATA,
-  INITIAL_CONFIGURATION_INPUT_DATA,
-  JSON_DATA_KEY,
-} from "../App.data";
+
+const INITIAL_CONFIGURATION_INPUT_DATA = { fields: [] };
+const JSON_DATA_KEY = "auto_save_json_data";
+const autoSaveJsonData = localStorage.getItem(JSON_DATA_KEY);
 
 export const useConfiguration = () => {
   const [jsonData, setJsonData] = useState(
-    AUTO_SAVE_JSON_DATA ||
+    autoSaveJsonData ||
       JSON.stringify(INITIAL_CONFIGURATION_INPUT_DATA, null, 2)
   );
 
   const [parsedData, setParsedData] = useState(
-    AUTO_SAVE_JSON_DATA
-      ? JSON.parse(AUTO_SAVE_JSON_DATA)
+    autoSaveJsonData
+      ? JSON.parse(autoSaveJsonData)
       : INITIAL_CONFIGURATION_INPUT_DATA
   );
 
@@ -36,10 +35,5 @@ export const useConfiguration = () => {
     }
   };
 
-  return {
-    jsonData,
-    fields: parsedData.fields,
-    error,
-    handleJsonChange,
-  };
+  return { jsonData, fields: parsedData.fields, error, handleJsonChange };
 };

@@ -1,5 +1,10 @@
+import { ReactNode } from "react";
 import { Box, Typography } from "@mui/material";
-import { ContainerBoxProps } from "./ContainerBox.types";
+
+interface ContainerBoxProps {
+  title: string;
+  children: ReactNode;
+}
 
 const ContainerBox = ({ children, title }: ContainerBoxProps) => (
   <Box

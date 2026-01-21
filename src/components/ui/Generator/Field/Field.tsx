@@ -1,3 +1,4 @@
+import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form";
 import {
   Box,
   Checkbox,
@@ -11,8 +12,14 @@ import {
   RadioGroup,
   TextField,
 } from "@mui/material";
-import { FieldProps } from "./Field.types";
+import { IField } from "../../../../types/types";
 import { customize } from "../../../../utils/validation";
+
+interface FieldProps {
+  field: IField;
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
+}
 
 const Field = ({
   field: { type, name, label, placeholder, options, validation, fields },

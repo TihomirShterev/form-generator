@@ -1,15 +1,12 @@
-import { Field } from "./Field/Field.types";
+import { IField } from "../../../types/types";
 
-export const MOCK_FIELDS: Field[] = [
+export const MOCK_FIELDS: IField[] = [
   {
     type: "text",
     name: "name",
     label: "Name",
     placeholder: "Enter your name",
-    validation: {
-      required: "Name is required",
-      custom: "alphabetic",
-    },
+    validation: { required: "Name is required", custom: "alphabetic" },
   },
   {
     name: "entity",
@@ -49,10 +46,7 @@ export const MOCK_FIELDS: Field[] = [
         name: "iban",
         label: "IBAN",
         placeholder: "Enter IBAN",
-        validation: {
-          required: "IBAN is required",
-          custom: "alphanumeric",
-        },
+        validation: { required: "IBAN is required", custom: "alphanumeric" },
       },
       {
         type: "text",
@@ -87,10 +81,7 @@ export const MOCK_FIELDS: Field[] = [
             name: "email",
             label: "Email",
             placeholder: "Enter your email",
-            validation: {
-              required: "Email is required",
-              custom: "email",
-            },
+            validation: { required: "Email is required", custom: "email" },
           },
         ],
       },
@@ -102,7 +93,7 @@ export const MOCK_FIELDS: Field[] = [
           {
             type: "text",
             name: "zipCode",
-            label: "Zip Code",
+            label: "Zip Code (Try 10001 for New York)",
             placeholder: "Enter Zip Code",
             validation: {
               custom: "numeric",
@@ -122,16 +113,8 @@ export const MOCK_FIELDS: Field[] = [
             label: "State (Auto-filled)",
             validation: { required: "State is required" },
           },
-          {
-            type: "text",
-            name: "addressLineOne",
-            label: "Address Line 1",
-          },
-          {
-            type: "text",
-            name: "addressLineTwo",
-            label: "Address Line 2",
-          },
+          { type: "text", name: "addressLineOne", label: "Address Line 1" },
+          { type: "text", name: "addressLineTwo", label: "Address Line 2" },
         ],
       },
     ],
@@ -147,6 +130,3 @@ export const MOCK_FIELDS: Field[] = [
     ],
   },
 ];
-
-export const FORM_DATA_KEY = "auto_save_form_data";
-export const AUTO_SAVE_FORM_DATA = localStorage.getItem(FORM_DATA_KEY);
